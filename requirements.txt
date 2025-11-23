@@ -141,3 +141,4 @@ uvicorn[standard]>=0.32.0
 
 x402>=0.2.1
     # via spoon-ai-sdk (pyproject.toml)
+yfinance>=0.2.0
