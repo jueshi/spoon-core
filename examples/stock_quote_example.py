@@ -24,5 +24,15 @@ async def main():
     response = await agent.handle_request(f"price of {symbol}")
     print(f"Result:\n{response}")
 
+    # Example 3: Direct symbol query (alternative format)
+    print(f"\nQuerying: 'AAPL'")
+    response = await agent.handle_request("AAPL")
+    print(f"Result:\n{response}")
+
+    # Example 4: Simple quote request
+    print(f"\nQuerying: 'TSLA quote'")
+    response = await agent.handle_request("TSLA quote")
+    print(f"Result:\n{response}")
+
 if __name__ == "__main__":
     asyncio.run(main())
