@@ -1,0 +1,47 @@
+{
+  "api_keys": {
+    "gemini": "env:GEMINI_API_KEY",
+    "openrouter": "env:OPENROUTER_API_KEY"
+  },
+  "llm_providers": {
+    "gemini": {
+      "api_key": "env:GEMINI_API_KEY",
+      "model": "gemini-1.5-pro",
+      "max_tokens": 4096,
+      "temperature": 0.3
+    },
+    "openrouter": {
+      "api_key": "env:OPENROUTER_API_KEY",
+      "base_url": "https://openrouter.ai/api/v1",
+      "model": "openai/gpt-3.5-turbo",
+      "max_tokens": 4096,
+      "temperature": 0.7,
+      "custom_headers": {
+        "HTTP-Referer": "https://github.com/spoon-ai/spoon-core",
+        "X-Title": "SpoonAI Agent"
+      }
+    }
+  },
+  "llm_settings": {
+    "default_provider": "gemini",
+    "fallback_chain": ["gemini", "openrouter"]
+  },
+  "agents": {
+    "mcp_agent": {
+      "class": "SpoonReactMCP",
+      "description": "Agent using MCP tools with Gemini and OpenRouter fallback",
+      "tools": [
+        {
+          "name": "example_mcp_tool",
+          "type": "mcp",
+          "mcp_server": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-memory"],
+            "env": {}
+          }
+        }
+      ]
+    }
+  },
+  "default_agent": "mcp_agent"
+}
